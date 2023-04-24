@@ -14,81 +14,18 @@ local M = {
   },
   keys = {
     {
-      "<leader>?",
-      function()
-        require("telescope.builtin").oldfiles()
-      end,
-      desc = "[?] Find recently opened files",
-    },
-    {
-      "<leader>u",
+      "<leader>su",
       function()
         require("telescope").extensions.undo.undo()
       end,
-      desc = "[u] [u]ndo",
+      desc = "undo",
     },
     {
-      "<leader><space>",
-      function()
-        require("telescope.builtin").buffers()
-      end,
-      desc = "[ ] Find existing buffers",
-    },
-    {
-      "<leader>tb",
+      "<leader>sB",
       function()
         require("telescope.builtin").builtin()
       end,
-      desc = "Show [t]elescope [b]uiltins ",
-    },
-    {
-      "<leader>tk",
-      function()
-        require("telescope.builtin").keymaps()
-      end,
-      desc = "[tk] List all keymaps",
-    },
-    {
-      "<leader>/",
-      function()
-        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown())
-      end,
-      desc = "[/] Fuzzily search in current buffer]",
-    },
-    {
-      "<leader>sf",
-      function()
-        require("telescope.builtin").find_files()
-      end,
-      desc = "[S]earch [F]iles",
-    },
-    {
-      "<leader>sh",
-      function()
-        require("telescope.builtin").help_tags()
-      end,
-      desc = "[S]earch [H]elp",
-    },
-    {
-      "<leader>sw",
-      function()
-        require("telescope.builtin").grep_string()
-      end,
-      desc = "[S]earch current [W]ord",
-    },
-    {
-      "<leader>sg",
-      function()
-        require("telescope.builtin").live_grep()
-      end,
-      desc = "[S]earch by [G]rep",
-    },
-    {
-      "<leader>sd",
-      function()
-        require("telescope.builtin").diagnostics()
-      end,
-      desc = "[S]earch [D]iagnostics",
+      desc = "Builtins",
     },
     {
       "<leader>ts",
@@ -105,7 +42,6 @@ local M = {
       end,
       desc = "[T]mux [W]indows",
     },
-
     {
       "<leader>tp",
       function()

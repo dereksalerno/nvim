@@ -4,7 +4,7 @@
 
 vim.cmd([[
     let g:clipboard = {
-          \   'name': 'myClipboard',
+          \   'name': 'tmux',
           \   'copy': {
           \      '+': ['tmux', 'load-buffer', '-'],
           \      '*': ['tmux', 'load-buffer', '-'],
@@ -16,3 +16,7 @@ vim.cmd([[
           \   'cache_enabled': 1,
           \ }
 ]])
+
+vim.g.nord_contrast = true
+vim.g.nord_borders = false
+vim.g.nord_disable_background = false
