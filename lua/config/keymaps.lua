@@ -25,4 +25,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*zzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
+-- vim.opt.foldopen = "all"
+-- vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

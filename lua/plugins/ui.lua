@@ -4,7 +4,7 @@ return {
     opts = function(_, opts)
       opts.options = {
         icons_enabled = true,
-        theme = "auto",
+        theme = "tokyonight",
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
@@ -55,5 +55,17 @@ return {
       },
     },
     keys = false,
+  },
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      theme = "tokyonight",
+    },
   },
 }
