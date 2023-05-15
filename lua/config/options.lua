@@ -5,28 +5,42 @@ vim.g.maplocalleader = " "
 
 local opt = vim.opt
 
-vim.cmd([[
-    let g:clipboard = {
-          \   'name': 'tmux',
-          \   'copy': {
-          \      '+': ['tmux', 'load-buffer', '-'],
-          \      '*': ['tmux', 'load-buffer', '-'],
-          \    },
-          \   'paste': {
-          \      '+': ['tmux', 'save-buffer', '-'],
-          \      '*': ['tmux', 'save-buffer', '-'],
-          \   },
-          \   'cache_enabled': 1,
-          \ }
-]])
+local function copy(lines, _)
+  require('osc52').copy(table.concat(lines, '\n'))
+end
 
-vim.opt.conceallevel = 0
+local function paste()
+  return {vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('')}
+end
+
+vim.g.clipboard = {
+  name = 'osc52',
+  copy = {['+'] = copy, ['*'] = copy},
+  paste = {['+'] = paste, ['*'] = paste},
+}
+
+-- vim.cmd([[
+--     let g:clipboard = {
+--           \   'name': 'tmux',
+--           \   'copy': {
+--           \      '+': ['tmux', 'load-buffer', '-'],
+--           \      '*': ['tmux', 'load-buffer', '-'],
+--           \    },
+--           \   'paste': {
+--           \      '+': ['tmux', 'save-buffer', '-'],
+--           \      '*': ['tmux', 'save-buffer', '-'],
+--           \   },
+--           \   'cache_enabled': 1,
+--           \ }
+-- ]])
+
 
 
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"
-opt.conceallevel = 3 -- Hide * markup for bold and italic
+-- opt.conceallevel = 3 -- Hide * markup for bold and italic
+opt.conceallevel = 0 
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
@@ -63,7 +77,7 @@ opt.undolevels = 10000
 opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
-opt.wrap = false -- Disable line wrap
+opt.wrap = true -- Disable line wrap
 opt.foldopen = "all"
 opt.foldlevel = 40
 opt.foldmethod = "expr"
