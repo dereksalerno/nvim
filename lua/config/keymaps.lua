@@ -168,4 +168,3 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*zzzv")
 vim.keymap.set("n", "J", "mzJ`z")
 
-

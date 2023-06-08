@@ -243,6 +243,7 @@ return {
         ["<leader>f"] = { name = "+file/find" },
         ["<leader>g"] = { name = "+git" },
         ["<leader>gh"] = { name = "+hunks" },
+        ["<leader>gd"] = { name = "+diff" },
         ["<leader>q"] = { name = "+quit/session" },
         ["<leader>s"] = { name = "+search" },
         ["<leader>u"] = { name = "+ui" },
@@ -254,6 +255,38 @@ return {
       local wk = require("which-key")
       wk.setup(opts)
       wk.register(opts.defaults)
+    end,
+  },
+
+  {
+    "sindrets/diffview.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("diffview").setup({})
+    end,
+  },
+  {
+    "akinsho/git-conflict.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("git-conflict").setup({
+        default_mappings = {
+          ours = "o",
+          theirs = "t",
+          none = "0",
+          both = "b",
+          next = "n",
+          prev = "p",
+        },
+        default_commands = true, -- disable commands created by this plugin
+        disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
+        highlights = { -- They must have background color, otherwise the default color will be used
+          incoming = "DiffText",
+          current = "DiffAdd",
+        },
+      })
     end,
   },
 
