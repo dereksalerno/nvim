@@ -179,7 +179,9 @@ return {
           nls.builtins.formatting.fish_indent,
           nls.builtins.diagnostics.fish,
           nls.builtins.formatting.stylua,
-          nls.builtins.formatting.shfmt,
+          nls.builtins.formatting.shfmt.with({
+            args = { "--indent", "2" },
+          }),
           -- nls.builtins.diagnostics.flake8,
         },
       }

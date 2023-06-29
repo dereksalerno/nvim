@@ -156,6 +156,7 @@ function M.toggle_diagnostics()
   end
 end
 
+
 function M.deprecate(old, new)
   Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
 end

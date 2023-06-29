@@ -19,23 +19,6 @@ vim.g.clipboard = {
   paste = {['+'] = paste, ['*'] = paste},
 }
 
--- vim.cmd([[
---     let g:clipboard = {
---           \   'name': 'tmux',
---           \   'copy': {
---           \      '+': ['tmux', 'load-buffer', '-'],
---           \      '*': ['tmux', 'load-buffer', '-'],
---           \    },
---           \   'paste': {
---           \      '+': ['tmux', 'save-buffer', '-'],
---           \      '*': ['tmux', 'save-buffer', '-'],
---           \   },
---           \   'cache_enabled': 1,
---           \ }
--- ]])
-
-
-
 opt.autowrite = true -- Enable auto write
 opt.clipboard = "unnamedplus" -- Sync with system clipboard
 opt.completeopt = "menu,menuone,noselect"

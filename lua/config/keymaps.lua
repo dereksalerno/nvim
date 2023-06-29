@@ -147,6 +147,7 @@ map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -- custom keymaps
 map("n", "<leader>cj", "<cmd>%!jq .<cr>", { desc = "Run jq on current buffer" })
+map("n", "<leader>ct", "<cmd>retab<cr>", {desc = "Convert Tabs to Spaces" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
