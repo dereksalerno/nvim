@@ -68,7 +68,6 @@ return {
       })
     end,
   },
-
   -- search/replace in multiple files
   {
     "nvim-pack/nvim-spectre",
@@ -242,6 +241,7 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>f"] = { name = "+file/find" },
         ["<leader>g"] = { name = "+git" },
+        ["<leader>h"] = { name = "+harpoon" },
         ["<leader>gh"] = { name = "+hunks" },
         ["<leader>gd"] = { name = "+diff" },
         ["<leader>q"] = { name = "+quit/session" },
@@ -264,6 +264,25 @@ return {
     event = "VeryLazy",
     config = function()
       require("diffview").setup({})
+    end,
+  },
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = {
+      { "<Leader>ha", '<cmd>lua require("harpoon.mark").add_file()<CR>', desc = "Add Harpoon File"  },
+      { "<Leader>ht", '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', desc = "Toggle Harpoon Menu"  },
+      { "<Leader>hn", '<cmd>lua require("harpoon.ui").nav_next()<CR>', desc = "Harpoon Previos"  },
+      { "<Leader>hp", '<cmd>lua require("harpoon.ui").nav_prev()<CR>', desc = "Harpoon Next"  },
+    },
+  },
+  {
+    "f-person/git-blame.nvim",
+    cmd = "GitBlameToggle",
+    keys = { { "<Leader>gb", "<cmd>GitBlameToggle<CR>" } },
+    config = function()
+      vim.g["gitblame_date_format"] = "%r" -- relative date
+      vim.g["gitblame_enabled"] = 0 -- default disabled
     end,
   },
   {
