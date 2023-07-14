@@ -16,11 +16,19 @@ end
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
--- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+-- -- Move to window using the <ctrl> hjkl keys
+-- map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
+-- map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
+-- map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
+-- map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+
+map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { desc = "Tmux Navigate Left" })
+map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
+map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
+map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Tmux Navigate Right" })
+map("n", "<C-\\>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Tmux Navigate Last Active Pane" })
+map("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { desc = "Tmux Navigate Next" })
+
 
 -- Resize window using <ctrl> arrow keys
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
