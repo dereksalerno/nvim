@@ -48,6 +48,7 @@ return {
       autoformat = false,
     },
   },
+  { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = "mason.nvim",
