@@ -26,6 +26,7 @@ return {
       vim.g["gitblame_enabled"] = 0 -- default disabled
     end,
   },
+  { "tpope/vim-fugitive"},
   {
     "akinsho/git-conflict.nvim",
     version = "*",

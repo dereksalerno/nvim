@@ -13,7 +13,7 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
       opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "emoji" } }))
-  --    opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "codeium" } }))
+      --    opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "codeium" } }))
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
