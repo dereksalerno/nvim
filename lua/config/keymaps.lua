@@ -2,43 +2,27 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
-local Util = require("lazyvim.util")
+vim.keymap.set("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { desc = "Tmux Navigate Left" })
+vim.keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
+vim.keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
+vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Tmux Navigate Right" })
+vim.keymap.set("n", "<C-b><C-b>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Tmux Navigate Last Active Pane" })
+vim.keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { desc = "Tmux Navigate Next" })
 
-local function map(mode, lhs, rhs, opts)
-  local keys = require("lazy.core.handler").handlers.keys
-  ---@cast keys LazyKeysHandler
-  -- do not create the keymap if a lazy keys handler exists
-  if not keys.active[keys.parse({ lhs, mode = mode }).id] then
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    if opts.remap and not vim.g.vscode then
-      opts.remap = nil
-    end
-    vim.keymap.set(mode, lhs, rhs, opts)
-  end
-end
-
-map("n", "<C-h>", "<Cmd>NvimTmuxNavigateLeft<CR>", { desc = "Tmux Navigate Left" })
-map("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { desc = "Tmux Navigate Down" })
-map("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
-map("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Tmux Navigate Right" })
-map("n", "<C-b><C-b>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Tmux Navigate Last Active Pane" })
-map("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { desc = "Tmux Navigate Next" })
-
-map("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
-map("n", "<leader>uL", function()
-  Util.toggle("relativenumber", true)
-  Util.toggle("number")
+vim.keymap.set("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
+vim.keymap.set("n", "<leader>uL", function()
+  require("lazyvim.util").toggle("relativenumber", true)
+  require("lazyvim.util").toggle("number")
 end, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ul", function()
-  Util.toggle("relativenumber")
+vim.keymap.set("n", "<leader>ul", function()
+  require("lazyvim.util").toggle("relativenumber")
 end, { desc = "Toggle Relative Line Numbers" })
 
 -- custom keymaps
-map("n", "<leader>cj", "<cmd>%!jq .<cr>", { desc = "Run jq on current buffer" })
-map("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
-map("n", "<leader>ch", "<cmd>ChatGPT<cr>", { desc = "Open ChatGPT" })
-map("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
+vim.keymap.set("n", "<leader>cj", "<cmd>%!jq .<cr>", { desc = "Run jq on current buffer" })
+vim.keymap.set("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
+vim.keymap.set("n", "<leader>ch", "<cmd>ChatGPT<cr>", { desc = "Open ChatGPT" })
+vim.keymap.set("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
