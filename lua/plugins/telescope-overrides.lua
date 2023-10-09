@@ -5,9 +5,6 @@ local M = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "debugloop/telescope-undo.nvim" },
-    {
-      "camgraff/telescope-tmux.nvim",
-    },
   },
   keys = {
     {
@@ -23,28 +20,6 @@ local M = {
         require("telescope.builtin").builtin()
       end,
       desc = "Builtins",
-    },
-    {
-      "<leader>ts",
-      function()
-        require("telescope").extensions.tmux.sessions({})
-      end,
-      desc = "[T]mux [S]essions",
-    },
-
-    {
-      "<leader>tw",
-      function()
-        require("telescope").extensions.tmux.windows({})
-      end,
-      desc = "[T]mux [W]indows",
-    },
-    {
-      "<leader>tp",
-      function()
-        require("telescope").extensions.tmux.pane_contents({})
-      end,
-      desc = "[T]mux [P]ane_Contents",
     },
   },
   opts = function()
@@ -131,10 +106,10 @@ local M = {
     })
     local telescope = require("telescope")
     telescope.setup(opts)
-    require("telescope").load_extension("undo")
-    telescope.load_extension("fzf")
+    telescope.load_extension "fzf"
+    telescope.load_extension("undo")
     telescope.load_extension("ui-select")
-    telescope.load_extension("tmux")
+    telescope.load_extension "file_browser"
   end,
 }
 return M
