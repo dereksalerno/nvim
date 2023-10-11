@@ -3,6 +3,7 @@ local M = {
   event = "BufReadPre",
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    { "nvim-telescope/telescope-frecency.nvim"  },
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "debugloop/telescope-undo.nvim" },
   },
@@ -13,6 +14,12 @@ local M = {
         require("telescope").extensions.undo.undo()
       end,
       desc = "undo",
+    },
+    { "<leader><leader>", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+    {
+      "<leader>np",
+      function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
+      desc = "Find Neovim Plugin File",
     },
     {
       "<leader>sB",
@@ -109,6 +116,7 @@ local M = {
     telescope.load_extension "fzf"
     telescope.load_extension("undo")
     telescope.load_extension("ui-select")
+    telescope.load_extension "frecency"
     telescope.load_extension "file_browser"
   end,
 }
