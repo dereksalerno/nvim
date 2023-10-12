@@ -9,7 +9,7 @@ vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Tmux Na
 vim.keymap.set("n", "<C-b><C-b>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Tmux Navigate Last Active Pane" })
 vim.keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { desc = "Tmux Navigate Next" })
 
-vim.keymap.set("n", "<leader>uf", require("lazyvim.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
+vim.keymap.set("n", "<leader>uf", require("lazyvim.util.format").toggle, { desc = "Toggle format on Save" })
 vim.keymap.set("n", "<leader>uL", function()
   require("lazyvim.util").toggle("relativenumber", true)
   require("lazyvim.util").toggle("number")
