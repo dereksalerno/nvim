@@ -1,4 +1,17 @@
 return {
+  {
+  "sanathks/workspace.nvim",
+  dependencies = {"nvim-telescope/telescope.nvim"},
+  config = function()
+    require("workspace").setup({
+      workspaces = {
+        { name = "bin", path = "~/bin", keymap = { "<leader>tp" } },
+        { name = "neovim", path = "~/.config/nvim", keymap = { "<leader>nc" } },
+      }
+    })
+  end,
+  },
+  {
   "alexghergh/nvim-tmux-navigation",
   event = "VeryLazy",
   config = function()
@@ -11,9 +24,8 @@ return {
         down = "<C-j>",
         up = "<C-k>",
         right = "<C-l>",
-        last_active = "<C-\\>",
-        next = "<C-Space>",
       },
     })
   end,
+  },
 }

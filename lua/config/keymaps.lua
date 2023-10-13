@@ -7,7 +7,6 @@ vim.keymap.set("n", "<C-j>", "<Cmd>NvimTmuxNavigateDown<CR>", { desc = "Tmux Nav
 vim.keymap.set("n", "<C-k>", "<Cmd>NvimTmuxNavigateUp<CR>", { desc = "Tmux Navigate Up" })
 vim.keymap.set("n", "<C-l>", "<Cmd>NvimTmuxNavigateRight<CR>", { desc = "Tmux Navigate Right" })
 vim.keymap.set("n", "<C-b><C-b>", "<Cmd>NvimTmuxNavigateLastActive<CR>", { desc = "Tmux Navigate Last Active Pane" })
-vim.keymap.set("n", "<C-Space>", "<Cmd>NvimTmuxNavigateNavigateNext<CR>", { desc = "Tmux Navigate Next" })
 
 vim.keymap.set("n", "<leader>uf", require("lazyvim.util.format").toggle, { desc = "Toggle format on Save" })
 vim.keymap.set("n", "<leader>uL", function()
@@ -21,14 +20,10 @@ end, { desc = "Toggle Relative Line Numbers" })
 -- custom keymaps
 vim.keymap.set("n", "<leader>cj", "<cmd>%!jq .<cr>", { desc = "Run jq on current buffer" })
 vim.keymap.set("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
-vim.keymap.set("n", "<leader>ch", "<cmd>ChatGPT<cr>", { desc = "Open ChatGPT" })
-vim.keymap.set("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
--- vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
