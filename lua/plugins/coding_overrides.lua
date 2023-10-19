@@ -48,12 +48,6 @@ return {
       })
     end,
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      autoformat = false,
-    },
-  },
   { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
   {
     "jay-babu/mason-nvim-dap.nvim",
