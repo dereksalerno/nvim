@@ -49,6 +49,7 @@ return {
     end,
   },
   { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
+
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = "mason.nvim",
@@ -70,6 +71,16 @@ return {
     },
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters = {
+        shfmt = {
+          prepend_args = { "-i", "2", "-ci" },
+        },
+      },
+    },
+  },
   {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
