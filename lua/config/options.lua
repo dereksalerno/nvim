@@ -16,6 +16,8 @@ vim.g.clipboard = {
   paste = { ["+"] = paste, ["*"] = paste },
 }
 
+vim.g.autoformat = false
+
 vim.opt.conceallevel = 0
 vim.opt.wrap = true -- Disable line wrap
 vim.opt.foldopen = "all"
