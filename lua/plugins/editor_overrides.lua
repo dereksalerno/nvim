@@ -30,6 +30,7 @@ return {
     cmd = "GitBlameToggle",
     keys = { { "<Leader>gb", "<cmd>GitBlameToggle<CR>", desc = "Toggle Git Blame" } },
     config = function()
+      vim.g["gitblame_display_virtual_text"] = 0
       vim.g["gitblame_date_format"] = "%r" -- relative date
       vim.g["gitblame_enabled"] = 0 -- default disabled
     end,
@@ -41,16 +42,10 @@ return {
     event = "VeryLazy",
     config = function()
       require("git-conflict").setup({
-        default_mappings = {
-          ours = "o",
-          theirs = "t",
-          none = "0",
-          both = "b",
-          next = "n",
-          prev = "p",
-        },
+        default_mappings = true,
         default_commands = true, -- disable commands created by this plugin
         disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
+        list_opener = 'copen',
         highlights = { -- They must have background color, otherwise the default color will be used
           incoming = "DiffText",
           current = "DiffAdd",
