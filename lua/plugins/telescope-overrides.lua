@@ -10,6 +10,13 @@ return {
     },
     keys = {
       {
+        "<leader>fb",
+        function()
+          require("telescope").extensions.file_browser.file_browser()
+        end,
+        desc = "file_browser",
+      },
+      {
         "<leader>su",
         function()
           require("telescope").extensions.undo.undo()
@@ -120,7 +127,6 @@ return {
       telescope.load_extension("undo")
       telescope.load_extension("ui-select")
       telescope.load_extension("frecency")
-      telescope.load_extension("file_browser")
     end,
   },
   {
