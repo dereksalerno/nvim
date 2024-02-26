@@ -10,7 +10,7 @@ return {
     },
     keys = {
       {
-        "<leader>fb",
+        "<leader>e",
         function()
           require("telescope").extensions.file_browser.file_browser()
         end,
