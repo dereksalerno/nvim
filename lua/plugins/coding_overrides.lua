@@ -49,7 +49,7 @@ return {
     end,
   },
   { "kkharji/sqlite.lua", enabled = not jit.os:find("Windows") },
-
+  { "nvim-neotest/nvim-nio" },
   {
     "jay-babu/mason-nvim-dap.nvim",
     dependencies = "mason.nvim",
@@ -71,6 +71,7 @@ return {
     },
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
+  { "towolf/vim-helm" },
   {
     "stevearc/conform.nvim",
     opts = {

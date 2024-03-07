@@ -1,12 +1,5 @@
 return {
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      -- disable the leader-e default
-      { "<leader>e", mode = { "n", "x", "o" }, false },
-    },
-  },
-  {
     "sindrets/diffview.nvim",
     version = "*",
     event = "VeryLazy",

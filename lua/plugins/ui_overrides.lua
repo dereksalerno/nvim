@@ -28,7 +28,7 @@ return {
     "nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local git_blame = require("gitblame")
+		 local git_blame = require("gitblame")
 
 		require("lualine").setup({
 			options = {
@@ -39,7 +39,8 @@ return {
 			},
 
 			sections = {
-				lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
+		 lualine_c = { { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } },
+				lualine_x = { {require('auto-session.lib').current_session_name} },
 			},
 
 			winbar = {
@@ -57,7 +58,7 @@ return {
 						},
 					},
 				},
-				lualine_b = {},
+				lualine_b = { },
 				lualine_c = {
 					{
 						"filetype",
@@ -66,7 +67,7 @@ return {
 						icon = { align = "left" },
 					},
 				},
-				lualine_x = {},
+				lualine_x = { {require('auto-session.lib').current_session_name} },
 				lualine_y = {},
 				lualine_z = {
 					{
@@ -106,7 +107,7 @@ return {
 					},
 				},
 				lualine_c = {},
-				lualine_x = {},
+				lualine_x = { {require('auto-session.lib').current_session_name} },
 				lualine_y = {
 					{
 						"buffers",
