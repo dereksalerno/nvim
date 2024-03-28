@@ -72,6 +72,8 @@ return {
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "towolf/vim-helm" },
+  
+  { "taybart/b64.nvim" },
   {
     "stevearc/conform.nvim",
     opts = {

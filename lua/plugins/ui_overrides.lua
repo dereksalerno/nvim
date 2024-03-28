@@ -29,7 +29,12 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons", "abeldekat/harpoonline" },
     config = function()
       local git_blame = require("gitblame")
-      local Harpoonline = require("harpoonline").setup() -- using default config
+      local Harpoonline = require("harpoonline") -- using default config
+      Harpoonline.setup({
+        on_update = function()
+          require("lualine").refresh()
+        end,
+      })
       local lualine_c = { Harpoonline.format, "filename" }
 
       require("lualine").setup({

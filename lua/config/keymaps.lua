@@ -17,7 +17,10 @@ vim.keymap.set("n", "<leader>ul", function()
   require("lazyvim.util").toggle("relativenumber")
 end, { desc = "Toggle Relative Line Numbers" })
 
+-- 
 -- custom keymaps
+vim.keymap.set("v", "<leader>BE", ":<c-u>lua require('b64').encode()<cr>", { desc = "Base64 Encode" })
+vim.keymap.set("v", "<leader>BD", ":<c-u>lua require('b64').decode()<cr>", { desc = "Base64 Decode" })
 vim.keymap.set("n", "<leader>cj", "<cmd>%!jq .<cr>", { desc = "Run jq on current buffer" })
 vim.keymap.set("n", "<leader>ct", "<cmd>retab<cr>", { desc = "Convert Tabs to Spaces" })
 
