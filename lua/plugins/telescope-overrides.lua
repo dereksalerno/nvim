@@ -1,3 +1,7 @@
+local actions = require("telescope.actions")
+local open_with_trouble = require("trouble.sources.telescope").open
+-- Use this to add more results without clearing the trouble list
+local add_to_trouble = require("trouble.sources.telescope").add
 return {
   {
     "nvim-telescope/telescope.nvim",
@@ -55,9 +59,25 @@ return {
           },
         },
         defaults = {
-          mappings = { i = { ["<esc>"] = actions.close } },
+          mappings = {
+            i = { ["<esc>"] = actions.close, ["<c-t>"] = open_with_trouble },
+            n = { ["<c-t>"] = open_with_trouble },
+          },
         },
         extensions = {
+          frecency = {
+            db_root = "~/.config/nvim",
+            show_scores = true,
+            auto_validate = false,
+            show_unindexed = true,
+            ignore_patterns = { "*.git/*", "*/tmp/*" },
+            disable_devicons = false,
+            workspaces = {
+              ["conf"] = "~/.config",
+              ["data"] = "~/.local/share",
+              ["project"] = "~/bin/",
+            },
+          },
           fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter

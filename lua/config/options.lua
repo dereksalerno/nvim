@@ -2,19 +2,31 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-local function copy(lines, _)
-  require("osc52").copy(table.concat(lines, "\n"))
-end
 
-local function paste()
-  return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
-end
-
-vim.g.clipboard = {
-  name = "osc52",
-  copy = { ["+"] = copy, ["*"] = copy },
-  paste = { ["+"] = paste, ["*"] = paste },
-}
+    vim.g.clipboard = {
+      name = 'OSC 52',
+      copy = {
+        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+      },
+      paste = {
+        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+      },
+    }
+-- local function copy(lines, _)
+--   require("osc52").copy(table.concat(lines, "\n"))
+-- end
+--
+-- local function paste()
+--   return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+-- end
+--
+-- vim.g.clipboard = {
+--   name = "osc52",
+--   copy = { ["+"] = copy, ["*"] = copy },
+--   paste = { ["+"] = paste, ["*"] = paste },
+-- }
 
 
 -- local function copy()
@@ -29,10 +41,12 @@ vim.g.clipboard = {
 -- end
 
 vim.g.autoformat = false
+vim.g.python_recommended_style = 0
 
 vim.opt.conceallevel = 0
 vim.opt.wrap = true -- Disable line wrap
 vim.opt.foldopen = "all"
 vim.opt.foldlevel = 40
+vim.opt.ignorecase = false
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

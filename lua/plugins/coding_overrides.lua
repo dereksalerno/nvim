@@ -20,6 +20,15 @@ return {
 
       local luasnip = require("luasnip")
       local cmp = require("cmp")
+      table.insert(opts.sources, { name = "luasnip", max_item_count = 5 })
+      table.insert(opts.sources, {
+        name = "nvim_lsp",
+        max_item_count = 5,
+        entry_filter = function(entry)
+          return cmp.lsp.CompletionItemKind.Snippet ~= entry:get_kind()
+        end,
+      })
+      table.insert(opts.sources, { name = "path", max_item_count = 5 })
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
@@ -72,7 +81,7 @@ return {
   },
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "towolf/vim-helm" },
-  
+
   { "taybart/b64.nvim" },
   {
     "stevearc/conform.nvim",

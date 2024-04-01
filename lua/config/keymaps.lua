@@ -29,6 +29,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("i", "jk", "<Esc>")
 
+vim.keymap.set({"n", "v"}, "y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")

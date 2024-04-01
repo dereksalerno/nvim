@@ -31,6 +31,13 @@ return {
         desc = "harpoon quick menu",
       },
       {
+        "<leader>hs",
+        function()
+          require('harpeek').toggle()
+        end,
+        desc = "harpeek toggle",
+      },
+      {
         "<leader>1",
         function()
           require("harpoon"):list():select(1)
@@ -68,6 +75,12 @@ return {
     },
   },
   {
+    "WolfeCub/harpeek.nvim",
+    config = function()
+      require("harpeek").setup()
+    end,
+  },
+  {
     "f-person/git-blame.nvim",
     cmd = "GitBlameToggle",
     keys = { { "<Leader>gb", "<cmd>GitBlameToggle<CR>", desc = "Toggle Git Blame" } },
@@ -78,6 +91,11 @@ return {
     end,
   },
   { "tpope/vim-fugitive" },
+  {
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  -- vscode = false,
+  },
   {
     "akinsho/git-conflict.nvim",
     version = "*",

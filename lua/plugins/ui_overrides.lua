@@ -10,11 +10,6 @@ return {
     },
   },
   {
-    "folke/trouble.nvim",
-    -- opts will be merged with the parent spec
-    opts = { use_diagnostic_signs = true },
-  },
-  {
     "folke/which-key.nvim",
     optional = true,
     opts = {
@@ -28,7 +23,6 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", "abeldekat/harpoonline" },
     config = function()
-      local git_blame = require("gitblame")
       local Harpoonline = require("harpoonline") -- using default config
       Harpoonline.setup({
         on_update = function()
@@ -131,5 +125,58 @@ return {
         },
       })
     end,
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      update_focused_file = {
+        enable = true,
+        update_root = true,
+        ignore_list = {},
+      },
+      filesystem = {
+        bind_to_cwd = false,
+        use_libuv_file_watcher = true,
+        filtered_items = {
+          hide_dotfiles = false,
+          hide_gitignored = false,
+        },
+        window = {
+          mappings = {
+            ["<C-o>"] = "open_nofocus",
+          },
+        },
+        commands = {
+          open_nofocus = function(state)
+            require("neo-tree.sources.filesystem.commands").open(state)
+            vim.schedule(function()
+              vim.cmd([[Neotree focus]])
+            end)
+          end,
+        },
+      },
+      window = {
+        mappings = {
+          ["<cr>"] = "open",
+          ["h"] = "close_node",
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = vim.fn.expand("%:p:h") })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
+        end,
+        desc = "Explorer NeoTree (Root Dir)",
+      },
+    },
   },
 }
