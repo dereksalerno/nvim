@@ -66,11 +66,9 @@ return {
         },
         extensions = {
           frecency = {
-            db_root = "~/.config/nvim",
             show_scores = true,
-            auto_validate = false,
+            auto_validate = true,
             show_unindexed = true,
-            ignore_patterns = { "*.git/*", "*/tmp/*" },
             disable_devicons = false,
             workspaces = {
               ["conf"] = "~/.config",

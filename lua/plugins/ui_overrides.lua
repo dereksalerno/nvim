@@ -126,6 +126,7 @@ return {
       })
     end,
   },
+  { "akinsho/bufferline.nvim",  dependencies = "nvim-tree/nvim-web-devicons" },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -164,14 +165,14 @@ return {
     },
     keys = {
       {
-        "<leader>fe",
+        "<leader>fE",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = vim.fn.expand("%:p:h") })
         end,
         desc = "Explorer NeoTree (cwd)",
       },
       {
-        "<leader>fE",
+        "<leader>fe",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
         end,
