@@ -6,7 +6,7 @@ return {
     build = ":Copilot auth",
     opts = {
       suggestion = { enabled = false },
-      panel = { enabled = false },
+      panel = { enabled = true },
       filetypes = {
         yaml = true,
         markdown = true,

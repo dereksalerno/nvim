@@ -33,6 +33,7 @@ return {
 
       require("lualine").setup({
         options = {
+              theme = require("neofusion.lualine"),
           disabled_filetypes = {
             winbar = { "neo-tree", "alpha" },
             statusline = {},

@@ -1,6 +1,19 @@
 -- Autocmds are automatically loaded on the VeryLazy event
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+        local copy_to_unnamedplus = require('vim.ui.clipboard.osc52').copy('+')
+        copy_to_unnamedplus(vim.v.event.regcontents)
+        local copy_to_unnamed = require('vim.ui.clipboard.osc52').copy('*')
+        copy_to_unnamed(vim.v.event.regcontents)
+    end
+})
+
+
+
 --
 local augroup = vim.api.nvim_create_augroup("copilot-disable-patterns", { clear = true })
 local disable_dirs = {
@@ -19,7 +32,7 @@ for _, pattern in ipairs(disable_dirs) do
                 local client = vim.lsp.get_client_by_id(args.data.client_id)
                 if client.name == "copilot" then
                     vim.defer_fn(function()
-                        vim.cmd "silent Copilot detach"
+                        vim.cmd "silent Copilot toggle"
                     end, 0)
                 end
             end
@@ -35,11 +48,3 @@ vim.api.nvim_create_autocmd({
     vim.cmd("set ft=yaml.ansible")
   end,
 })
--- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
---     pattern = {"*"},
---     callback = function()
---       local save_cursor = vim.fn.getpos(".")
---       pcall(function() vim.cmd [[%s/\s\+$//e]] end)
---       vim.fn.setpos(".", save_cursor)
---     end,
--- })

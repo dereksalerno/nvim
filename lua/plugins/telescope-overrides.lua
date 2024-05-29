@@ -4,11 +4,21 @@ local open_with_trouble = require("trouble.sources.telescope").open
 local add_to_trouble = require("trouble.sources.telescope").add
 return {
   {
+    "danielfalk/smart-open.nvim",
+    branch = "0.2.x",
+    config = function()
+      require("telescope").load_extension("smart_open")
+    end,
+    dependencies = {
+      "kkharji/sqlite.lua",
+    },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     event = "BufReadPre",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-      { "nvim-telescope/telescope-frecency.nvim" },
+      { "nvim-telescope/telescope-fzy-native.nvim", build = "make" },
       { "nvim-telescope/telescope-ui-select.nvim" },
       { "debugloop/telescope-undo.nvim" },
     },
@@ -27,7 +37,13 @@ return {
         end,
         desc = "undo",
       },
-      { "<leader><leader>", "<cmd>Telescope frecency<cr>", desc = "Telescope Frecency" },
+      {
+        "<leader><leader>",
+        function()
+          require("telescope").extensions.smart_open.smart_open({filename_first = true, })
+        end,
+        desc = "Smart Open",
+      },
       {
         "<leader>np",
         function()
@@ -65,21 +81,18 @@ return {
           },
         },
         extensions = {
-          frecency = {
-            show_scores = true,
-            auto_validate = true,
-            show_unindexed = true,
+          smart_open = {
+            match_algorithm = "fzy",
             disable_devicons = false,
-            workspaces = {
-              ["conf"] = "~/.config",
-              ["data"] = "~/.local/share",
-              ["project"] = "~/bin/",
-            },
+          },
+          fzy_native = {
+            override_generic_sorter = false,
+            override_file_sorter = true,
           },
           fzf = {
             fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true, -- override the file sorter
+            override_file_sorter = false, -- override the file sorter
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
@@ -144,7 +157,6 @@ return {
       telescope.load_extension("fzf")
       telescope.load_extension("undo")
       telescope.load_extension("ui-select")
-      telescope.load_extension("frecency")
     end,
   },
   {
