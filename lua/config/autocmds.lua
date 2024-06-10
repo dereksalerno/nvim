@@ -15,30 +15,30 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 
 --
-local augroup = vim.api.nvim_create_augroup("copilot-disable-patterns", { clear = true })
-local disable_dirs = {
-    vim.fn.expand "/root" .. "/*",
-}
-for _, pattern in ipairs(disable_dirs) do
-    vim.api.nvim_create_autocmd("LspAttach", {
-        group = augroup,
-        pattern = "*", -- This pattern will match all files, including new buffers
-        callback = function(args)
-            -- Check if the buffer has a name (file associated) or if CWD starts with /home/user/Documents
-            local bufname = vim.api.nvim_buf_get_name(0)
-            local cwd = vim.fn.getcwd()
-
-            if bufname == "" and cwd:match("^" .. pattern) or bufname:match(pattern) then
-                local client = vim.lsp.get_client_by_id(args.data.client_id)
-                if client.name == "copilot" then
-                    vim.defer_fn(function()
-                        vim.cmd "silent Copilot toggle"
-                    end, 0)
-                end
-            end
-        end,
-    })
-end
+-- local augroup = vim.api.nvim_create_augroup("copilot-disable-patterns", { clear = true })
+-- local disable_dirs = {
+--     vim.fn.expand "/root" .. "/*",
+-- }
+-- for _, pattern in ipairs(disable_dirs) do
+--     vim.api.nvim_create_autocmd("LspAttach", {
+--         group = augroup,
+--         pattern = "*", -- This pattern will match all files, including new buffers
+--         callback = function(args)
+--             -- Check if the buffer has a name (file associated) or if CWD starts with /home/user/Documents
+--             local bufname = vim.api.nvim_buf_get_name(0)
+--             local cwd = vim.fn.getcwd()
+--
+--             if bufname == "" and cwd:match("^" .. pattern) or bufname:match(pattern) then
+--                 local client = vim.lsp.get_client_by_id(args.data.client_id)
+--                 if client.name == "copilot" then
+--                     vim.defer_fn(function()
+--                         vim.cmd "silent Copilot toggle"
+--                     end, 0)
+--                 end
+--             end
+--         end,
+--     })
+-- end
 vim.api.nvim_create_autocmd({
   "BufNewFile",
   "BufRead",
