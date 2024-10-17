@@ -11,11 +11,12 @@ return {
   },
   {
     "folke/which-key.nvim",
-    optional = true,
-    opts = {
-      spec = {
-            { "<leader>d", group = "debug" },
-    { "<leader>da", group = "adapters" },
+    defaults = {},
+    spec = {
+      {
+        mode = { "n", "v" },
+        { "<leader>d", group = "debug" },
+        { "<leader>da", group = "adapters" },
       },
     },
   },
@@ -33,7 +34,8 @@ return {
 
       require("lualine").setup({
         options = {
-              theme = require("neofusion.lualine"),
+          -- theme = require("neofusion.lualine"),
+          theme = "eldritch",
           disabled_filetypes = {
             winbar = { "neo-tree", "alpha" },
             statusline = {},
@@ -127,7 +129,7 @@ return {
       })
     end,
   },
-  { "akinsho/bufferline.nvim",  dependencies = "nvim-tree/nvim-web-devicons" },
+  { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
