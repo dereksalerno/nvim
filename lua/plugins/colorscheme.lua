@@ -2,14 +2,27 @@ return {
   {
     "folke/tokyonight.nvim",
     lazy = false,
+    priority = 1000,
     opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-      style = "night",
+        style = "night",
+        lualine_bold = true,
+        cache = false,
+        -- disable italic for functions
+        transparent = true,
     },
+      require("tokyonight").setup({
+        -- use the night style
+        styles = {
+          functions = {},
+        },
+        on_highlights = function(highlights, colors)
+          colors.black = "#000000"
+          highlights.FzfLuaPreviewTitle = colors.black
+        end,
+        on_colors = function(colors)
+          colors.black = "#000000"
+        end,
+      }),
   },
   {
     "diegoulloao/neofusion.nvim",
@@ -41,13 +54,13 @@ return {
     end,
   },
   {
-  "eldritch-theme/eldritch.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
+    "eldritch-theme/eldritch.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
       transparent = true,
     },
-},
+  },
   {
     "catppuccin/nvim",
     lazy = true,

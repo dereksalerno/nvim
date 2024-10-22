@@ -35,7 +35,7 @@ return {
       require("lualine").setup({
         options = {
           -- theme = require("neofusion.lualine"),
-          theme = "eldritch",
+          theme = "tokyonight",
           disabled_filetypes = {
             winbar = { "neo-tree", "alpha" },
             statusline = {},
