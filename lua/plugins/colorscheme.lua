@@ -7,7 +7,6 @@ return {
         style = "night",
         lualine_bold = true,
         cache = false,
-        -- disable italic for functions
         transparent = true,
     },
       require("tokyonight").setup({

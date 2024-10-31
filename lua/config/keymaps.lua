@@ -40,7 +40,4 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>K", "<cmd>lnext<CR>zz", { desc = "Next Location" })
 vim.keymap.set("n", "<leader>J", "<cmd>lprev<CR>zz", { desc = "Previous Location" })
 
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "*", "*zzzv")
 vim.keymap.set("n", "J", "mzJ`z")
