@@ -8,6 +8,13 @@ return {
     end,
   },
   {
+    "lewis6991/gitsigns.nvim",
+    event = "LazyFile",
+    keys = {
+      { "<leader>uB", require("gitsigns").toggle_current_line_blame, desc = "  Toggle Git Blame" },
+    },
+  },
+  {
     "NeogitOrg/neogit",
     dependencies = {
       "nvim-lua/plenary.nvim", -- required
@@ -17,9 +24,6 @@ return {
       "ibhagwan/fzf-lua", -- optional
     },
     config = true,
-    keys = {
-      { "<leader>uB", require("gitsigns").toggle_current_line_blame, desc = "  Toggle Git Blame" },
-    },
   },
   {
     "WolfeCub/harpeek.nvim",
