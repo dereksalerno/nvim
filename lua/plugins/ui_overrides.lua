@@ -27,6 +27,24 @@ return {
     config = function()
       local Harpoonline = require("harpoonline") -- using default config
       Harpoonline.setup({
+        default_list_name = "",
+        icon = "󰛢",
+        formatter = "default",
+        formatter_opts = {
+          default = {
+            inactive = " %s ", -- including spaces
+            active = "[%s]",
+            -- Max number of slots to display:
+            max_slots = 4, -- Suggestion: as many as there are "select" keybindings
+            -- The number of items in the harpoon list exceeds max_slots:
+            more = "…", -- horizontal elipsis. Disable using empty string
+          },
+          short = {
+            inner_separator = "|",
+          },
+        },
+        ---@type HarpoonlineFormatter
+        custom_formatter = nil,
         on_update = function()
           require("lualine").refresh()
         end,
@@ -35,7 +53,6 @@ return {
 
       require("lualine").setup({
         options = {
-          -- theme = require("neofusion.lualine"),
           theme = "tokyonight",
           disabled_filetypes = {
             winbar = { "neo-tree", "alpha" },
@@ -45,7 +62,7 @@ return {
 
         sections = {
           lualine_c = lualine_c,
-          lualine_x = { { require("auto-session.lib").current_session_name } },
+          lualine_x = { {} },
         },
 
         winbar = {
@@ -72,7 +89,7 @@ return {
               icon = { align = "left" },
             },
           },
-          lualine_x = { { require("auto-session.lib").current_session_name } },
+          lualine_x = { {} },
           lualine_y = {},
           lualine_z = {
             {
@@ -112,7 +129,7 @@ return {
             },
           },
           lualine_c = {},
-          lualine_x = { { require("auto-session.lib").current_session_name } },
+          lualine_x = { {} },
           lualine_y = {
             {
               "buffers",
