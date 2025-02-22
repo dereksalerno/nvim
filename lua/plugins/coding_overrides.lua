@@ -5,7 +5,7 @@ return {
     cmd = "Copilot",
     build = ":Copilot auth",
     opts = {
-      suggestion = { enabled = false },
+      suggestion = { enabled = true },
       panel = { enabled = true },
       filetypes = {
         yaml = true,
@@ -65,34 +65,6 @@ return {
       },
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      lua_ls = {
-        -- set defalt encoding for lua language server to utf-16
-        --
-        -- This is a workaround for the issue with the lua language server
-        settings = {
-          Lua = {
-            runtime = {
-              version = "LuaJIT",
-              path = vim.split(package.path, ";"),
-            },
-            encoding = "UTF-16",
-            diagnostics = {
-              globals = { "vim" },
-            },
-            workspace = {
-              library = {
-                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-              },
-            },
-          },
-        },
-      },
-    },
-  },
   { "nvim-neotest/nvim-nio" },
   { "tpope/vim-repeat", event = "VeryLazy" },
   { "towolf/vim-helm" },
@@ -106,13 +78,6 @@ return {
           prepend_args = { "-i", "2", "-ci" },
         },
       },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      highlight = { enable = true },
-      indent = { enable = false },
     },
   },
 }

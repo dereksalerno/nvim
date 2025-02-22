@@ -22,28 +22,26 @@ vim.api.nvim_create_autocmd({
   end,
 })
 
+local Snacks = require("snacks")
+local copilot_exists = pcall(require, "copilot")
 
- -- local augroup = vim.api.nvim_create_augroup("copilot-disable-patterns", { clear = true })
- -- local disable_dirs = {
- --     vim.fn.expand "/root" .. "/*",
- -- }
- -- for _, pattern in ipairs(disable_dirs) do
- --     vim.api.nvim_create_autocmd("LspAttach", {
- --         group = augroup,
- --         pattern = "*", -- This pattern will match all files, including new buffers
- --         callback = function(args)
- --             -- Check if the buffer has a name (file associated) or if CWD starts with /home/user/Documents
- --             local bufname = vim.api.nvim_buf_get_name(0)
- --             local cwd = vim.fn.getcwd()
- --
- --             if bufname == "" and cwd:match("^" .. pattern) or bufname:match(pattern) then
- --                 local client = vim.lsp.get_client_by_id(args.data.client_id)
- --                 if client.name == "copilot" then
- --                     vim.defer_fn(function()
- --                         vim.cmd "silent Copilot toggle"
- --                     end, 0)
- --                 end
- --             end
- --         end,
- --     })
- -- end
+if copilot_exists then
+  require("copilot.command").disable()
+  Snacks.toggle({
+    name = "Copilot Completion",
+    color = {
+      enabled = "azure",
+      disabled = "orange",
+    },
+    get = function()
+      return not require("copilot.client").is_disabled()
+    end,
+    set = function(state)
+      if state then
+        require("copilot.command").enable()
+      else
+        require("copilot.command").disable()
+      end
+    end,
+  }):map("<leader>ac")
+end

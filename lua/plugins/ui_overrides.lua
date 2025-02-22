@@ -12,16 +12,6 @@ return {
     },
   },
   {
-    "folke/which-key.nvim",
-    defaults = {},
-    spec = {
-      {
-        mode = { "n", "v" },
-        { "<leader>d", group = "debug" },
-      },
-    },
-  },
-  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons", "abeldekat/harpoonline" },
     config = function()

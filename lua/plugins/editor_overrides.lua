@@ -8,27 +8,21 @@ return {
     end,
   },
   {
-    "lewis6991/gitsigns.nvim",
-    event = "LazyFile",
-    keys = {
-      { "<leader>uB", require("gitsigns").toggle_current_line_blame, desc = "  Toggle Git Blame" },
-    },
-  },
-  {
-    "NeogitOrg/neogit",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- required
-      "sindrets/diffview.nvim", -- optional - Diff integration
-
-      -- Only one of these is needed.
-      "ibhagwan/fzf-lua", -- optional
-    },
-    config = true,
-  },
-  {
     "WolfeCub/harpeek.nvim",
     config = function()
       require("harpeek").setup()
     end,
+  },
+  {
+    "mistweaverco/kulala.nvim",
+    opts = {
+      additional_curl_options = { "--insecure" },
+      ui = {
+        display_mode = "float",
+        show_request_summary = false,
+        winbar = true,
+        default_winbar_panes = { "body", "headers", "headers_body", "verbose" },
+      },
+    },
   },
 }
