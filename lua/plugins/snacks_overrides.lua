@@ -9,6 +9,17 @@ return {
       scroll = { enabled = false },
       statuscolumn = { enabled = true },
       terminal = { enabled = true },
+      picker = {
+        explorer = {
+        enabled = true,
+        position = "left",
+        width = 30,
+        height = 0.9,
+        backdrop = 60,
+        zindex = 50,
+        preview = "main",
+        },
+      },
       styles = {
         terminal = {
           position = "float",
