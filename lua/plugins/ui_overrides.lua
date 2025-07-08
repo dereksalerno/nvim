@@ -45,7 +45,7 @@ return {
         options = {
           theme = "tokyonight",
           disabled_filetypes = {
-            winbar = { "neo-tree", "alpha" },
+            winbar = { "alpha" },
             statusline = {},
           },
         },
@@ -176,14 +176,14 @@ return {
     },
     keys = {
       {
-        "<leader>fE",
+        "<leader>fe",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = vim.fn.expand("%:p:h") })
         end,
         desc = "Explorer NeoTree (cwd)",
       },
       {
-        "<leader>fe",
+        "<leader>fE",
         function()
           require("neo-tree.command").execute({ toggle = true, dir = LazyVim.root() })
         end,
